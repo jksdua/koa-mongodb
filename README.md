@@ -1,13 +1,13 @@
-koa-mongodb [![Build Status](https://secure.travis-ci.org/koajs/koa-mongodb.svg)](http://travis-ci.org/koajs/koa-mongodb) [![Dependency Status](https://gemnasium.com/koajs/koa-mongodb.svg)](https://gemnasium.com/koajs/koa-mongodb)
+koa-mongodb [![Build Status](https://secure.travis-ci.org/jksdua/koa-mongodb.svg)](http://travis-ci.org/jksdua/koa-mongodb) [![Dependency Status](https://gemnasium.com/jksdua/koa-mongodb.svg)](https://gemnasium.com/jksdua/koa-mongodb)
 =========
 
-Redis storage for koa session middleware / cache.
+Mongodb storage for koa session middleware / cache.
 
 [![NPM](https://nodei.co/npm/koa-mongodb.svg?downloads=true)](https://nodei.co/npm/koa-mongodb/)
 
 ## Usage
 
-`koa-mongodb` works with [koa-generic-session](https://github.com/koajs/generic-session)(a generic session middleware for koa).
+`koa-mongodb` works with [koa-generic-session](https://github.com/koajs/generic-session)(a generic session middleware for koa) and [koa-header-session](https://github.com/jksdua/koa-header-session)(a header session middleware for koa).
 
 ### Example
 
@@ -15,7 +15,7 @@ Redis storage for koa session middleware / cache.
 var koa = require('koa');
 var http = require('http');
 var session = require('koa-generic-session');
-var redisStore = require('koa-mongodb');
+var mongodbStore = require('koa-mongodb');
 
 var app = koa();
 
@@ -23,7 +23,7 @@ app.name = 'koa-session-test';
 app.keys = ['keys', 'keykeys'];
 
 app.use(session({
-  store: redisStore()
+  store: mongodbStore()
 }));
 
 app.use(function *() {
@@ -38,12 +38,10 @@ app.listen(8080);
 ### Options
 
 ```
- * {Object} client    redis client
- * {String} host      redis connect host (without options.client)
- * {Number} port      redis connect port (without options.client)
- * {String} socket    redis connect socket (without options.client)
- * {String} db        redis db
- * {String} pass      redis password
+ *   {MongoCollection} [collection]                 monk collection
+ *   {Mixed}           [uri=localhost/test]         uri passed to monk
+ *   {Object}          [opt]                        options passed to monk
+ *   {String}          [collectionName=sessions]    name of the collection to use
 ```
 
 ## Licences

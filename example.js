@@ -16,7 +16,7 @@
 var koa = require('koa');
 var http = require('http');
 var session = require('koa-generic-session');
-var redisStore = require('./');
+var mongodbStore = require('./');
 
 var app = koa();
 
@@ -24,7 +24,7 @@ app.name = 'koa-session-test';
 app.keys = ['keys', 'keykeys'];
 
 app.use(session({
-  store: redisStore()
+  store: mongodbStore()
 }));
 
 app.use(function *() {

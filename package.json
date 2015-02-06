@@ -3,7 +3,7 @@
   "description": "koa session with mongodb",
   "repository": "jksdua/koa-mongodb",
   "version": "1.0.0",
-  "keywords": ["koa", "middleware", "session", "redis"],
+  "keywords": ["koa", "middleware", "session", "mongodb", "mongo"],
   "author": "Jaap Karan Singh <jksdua@gmail.com>",
   "dependencies": {
     "monk": "~0.9.1",
