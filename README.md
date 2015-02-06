@@ -1,13 +1,13 @@
-koa-redis [![Build Status](https://secure.travis-ci.org/koajs/koa-redis.svg)](http://travis-ci.org/koajs/koa-redis) [![Dependency Status](https://gemnasium.com/koajs/koa-redis.svg)](https://gemnasium.com/koajs/koa-redis)
+koa-mongodb [![Build Status](https://secure.travis-ci.org/koajs/koa-mongodb.svg)](http://travis-ci.org/koajs/koa-mongodb) [![Dependency Status](https://gemnasium.com/koajs/koa-mongodb.svg)](https://gemnasium.com/koajs/koa-mongodb)
 =========
 
 Redis storage for koa session middleware / cache.
 
-[![NPM](https://nodei.co/npm/koa-redis.svg?downloads=true)](https://nodei.co/npm/koa-redis/)
+[![NPM](https://nodei.co/npm/koa-mongodb.svg?downloads=true)](https://nodei.co/npm/koa-mongodb/)
 
 ## Usage
 
-`koa-redis` works with [koa-generic-session](https://github.com/koajs/generic-session)(a generic session middleware for koa).
+`koa-mongodb` works with [koa-generic-session](https://github.com/koajs/generic-session)(a generic session middleware for koa).
 
 ### Example
 
@@ -15,7 +15,7 @@ Redis storage for koa session middleware / cache.
 var koa = require('koa');
 var http = require('http');
 var session = require('koa-generic-session');
-var redisStore = require('koa-redis');
+var redisStore = require('koa-mongodb');
 
 var app = koa();
 
@@ -27,7 +27,7 @@ app.use(session({
 }));
 
 app.use(function *() {
-  this.session.name = 'koa-redis';
+  this.session.name = 'koa-mongodb';
   this.body = this.session.name;
 });
 
@@ -44,34 +44,6 @@ app.listen(8080);
  * {String} socket    redis connect socket (without options.client)
  * {String} db        redis db
  * {String} pass      redis password
-```
-
-## Benchmark
-
-|Server|Transaction rate|Response time|
-|------|----------------|-------------|
-|connect without session|**6763.56 trans/sec**|**0.01 secs**|
-|koa without session|**5684.75 trans/sec**|**0.01 secs**|
-|connect with session|**2759.70 trans/sec**|**0.02 secs**|
-|koa with session|**2355.38 trans/sec**|**0.02 secs**|
-
-Detail [benchmark report](https://github.com/dead-horse/koa-redis/tree/master/benchmark) here
-
-## Authors
-
-```
-$ git summary
-
- project  : koa-redis
- repo age : 6 months ago
- commits  : 34
- active   : 11 days
- files    : 16
- authors  :
-    27  dead_horse              79.4%
-     3  Jesse Yang              8.8%
-     3  sipajahava              8.8%
-     1  Alessandro Lensi        2.9%
 ```
 
 ## Licences

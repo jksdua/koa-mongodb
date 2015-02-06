@@ -1,2 +1,2 @@
 
-module.exports = require('./lib/koa-redis');
+module.exports = require('./lib/koa-mongodb');

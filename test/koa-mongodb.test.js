@@ -1,5 +1,5 @@
 /**!
- * koa-redis - test/koa-redis.test.js
+ * koa-mongodb - test/koa-mongodb.test.js
  * Copyright(c) 2013
  * MIT Licensed
  *
@@ -17,12 +17,20 @@ var store = require('../')();
 var should = require('should');
 var co = require('co');
 
-describe('test/koa-redis.test.js', function () {
+describe('test/koa-mongodb.test.js', function () {
+  // clean up before testing
+  before(function(done) {
+    co(function* () {
+      yield store.options.collection.remove({});
+      done();
+    })();
+  });
+
   it('should set with ttl ok', function (done) {
     co(function *() {
       yield store.set('key:ttl', {a: 1}, 86400000);
       (yield store.get('key:ttl')).should.eql({a: 1});
-      (yield store.client.ttl('key:ttl')).should.equal(86400);
+      (yield store.options.collection.findOne({ sid: 'key:ttl' })).should.have.property('expiresAt');
       done();
     })();
   });
@@ -31,7 +39,7 @@ describe('test/koa-redis.test.js', function () {
     co(function *() {
       yield store.set('key:nottl', {a: 1});
       (yield store.get('key:nottl')).should.eql({a: 1});
-      (yield store.client.ttl('key:nottl')).should.equal(-1);
+      (yield store.options.collection.findOne({ sid: 'key:nottl' })).should.not.have.property('expiresAt');
       done();
     })();
   });

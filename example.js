@@ -1,5 +1,5 @@
 /**!
- * koa-redis - example.js
+ * koa-mongodb - example.js
  * Copyright(c) 2013
  * MIT Licensed
  *
@@ -28,7 +28,7 @@ app.use(session({
 }));
 
 app.use(function *() {
-  this.session.name = 'koa-redis';
+  this.session.name = 'koa-mongodb';
   this.body = this.session.name;
 });
 
