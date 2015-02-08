@@ -37,6 +37,8 @@ app.listen(8080);
 
 ### Options
 
+Pass either a monk collection or databse uri, opt and collection name.
+
 ```
  *   {MongoCollection} [collection]                 monk collection
  *   {Mixed}           [uri=localhost/test]         uri passed to monk
