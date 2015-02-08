@@ -26,6 +26,11 @@ describe('test/koa-mongodb.test.js', function () {
     })();
   });
 
+  it('should be an event emitter', function() {
+    store.emit.should.be.a.Function;
+    store.on.should.be.a.Function;
+  });
+
   it('should set with ttl ok', function (done) {
     co(function *() {
       yield store.set('key:ttl', {a: 1}, 86400000);

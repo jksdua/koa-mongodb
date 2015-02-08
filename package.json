@@ -2,7 +2,7 @@
   "name": "koa-mongodb",
   "description": "koa session with mongodb",
   "repository": "jksdua/koa-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["koa", "middleware", "session", "mongodb", "mongo"],
   "author": "Jaap Karan Singh <jksdua@gmail.com>",
   "dependencies": {
